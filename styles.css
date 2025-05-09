@@ -132,12 +132,14 @@ h1 {
     position: absolute;
     background-color: var(--primary-color);
     opacity: 0.7;
+    height: 2px;
+    width: 2px;
 }
 
 .connecting-line {
-    height: 1px !important;
+    height: 2px !important;
     background-color: var(--primary-color);
-    opacity: 0.5;
+    opacity: 0.7;
 }
 
 .horizontal {
@@ -157,24 +159,22 @@ h1 {
     transform: translate(-6px, -6px);
     cursor: pointer;
     transition: background-color 0.2s, transform 0.2s;
+    z-index: 2;
+}
+
+.point::before {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
 }
 
 .point-number {
-    position: absolute;
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--on-surface);
-    z-index: 15;
-    pointer-events: none;
-    user-select: none;
-    background-color: rgba(255, 255, 255, 0.85);
-    border-radius: 50%;
-    width: 18px;
-    height: 18px;
-    text-align: center;
-    line-height: 18px;
-    transform: translate(-50%, -50%);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    display: none;
 }
 
 .point:hover {
@@ -580,14 +580,19 @@ h1 {
     }
     
     .point {
-        width: 10px;
-        height: 10px;
-        transform: translate(-5px, -5px);
+        width: 14px;
+        height: 14px;
+        transform: translate(-7px, -7px);
         transform-origin: center;
     }
     
+    .point::before {
+        width: 40px;
+        height: 40px;
+    }
+    
     .point:hover {
-        transform: translate(-5px, -5px) scale(1.2);
+        transform: translate(-7px, -7px) scale(1.2);
     }
     
     .point-number {
@@ -595,6 +600,8 @@ h1 {
         width: 16px;
         height: 16px;
         line-height: 16px;
+        font-weight: 500;
+        background-color: rgba(255, 255, 255, 0.95);
     }
     
     .rules {
