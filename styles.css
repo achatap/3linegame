@@ -45,6 +45,8 @@ body {
     border-radius: 12px;
     box-shadow: var(--elevation-2);
     transition: box-shadow var(--transition-speed);
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
 .container:hover {
@@ -111,6 +113,8 @@ h1 {
     background-color: var(--surface);
     border-radius: 8px;
     box-shadow: var(--elevation-1);
+    box-sizing: border-box;
+    max-width: 100%;
 }
 
 #game-board {
@@ -120,6 +124,8 @@ h1 {
     background-color: rgba(63, 81, 181, 0.03);
     border: 1px solid rgba(63, 81, 181, 0.2);
     border-radius: 4px;
+    box-sizing: border-box;
+    max-width: 100%;
 }
 
 .board-line {
@@ -500,26 +506,151 @@ h1 {
     .container {
         max-width: 100%;
         margin: 10px;
-    }
-}
-
-@media (max-width: 500px) {
-    .board-container {
-        width: 300px;
-        height: 300px;
-    }
-    
-    #game-board {
-        width: 280px;
-        height: 280px;
-    }
-    
-    .game-info {
-        flex-direction: column;
-        gap: 16px;
+        padding: 16px;
     }
     
     h1 {
         font-size: 24px;
+        margin-bottom: 16px;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 5px;
+        margin: 0;
+    }
+    
+    .container {
+        padding: 10px;
+        margin: 0;
+        max-width: 100%;
+        border-radius: 8px;
+    }
+    
+    .game-info {
+        flex-direction: column;
+        gap: 12px;
+        padding: 12px;
+    }
+    
+    .player-turn {
+        width: 100%;
+        text-align: center;
+    }
+    
+    #reset-button {
+        width: 100%;
+        padding: 12px;
+    }
+    
+    .board-container {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1/1;
+        max-width: 100%;
+        margin: 15px auto;
+        padding: 5px;
+    }
+    
+    #game-board {
+        width: 100%;
+        height: 100%;
+        max-width: none;
+    }
+    
+    .coin-counters {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .coin-counter {
+        margin: 0;
+    }
+    
+    .coin {
+        width: 24px;
+        height: 24px;
+        transform: translate(-12px, -12px);
+        transform-origin: center;
+    }
+    
+    .coin:hover {
+        transform: translate(-12px, -12px) scale(1.05);
+    }
+    
+    .point {
+        width: 10px;
+        height: 10px;
+        transform: translate(-5px, -5px);
+        transform-origin: center;
+    }
+    
+    .point:hover {
+        transform: translate(-5px, -5px) scale(1.2);
+    }
+    
+    .point-number {
+        font-size: 10px;
+        width: 16px;
+        height: 16px;
+        line-height: 16px;
+    }
+    
+    .rules {
+        padding: 16px;
+        margin-top: 20px;
+    }
+    
+    .rules h2 {
+        font-size: 20px;
+    }
+    
+    .rules li {
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+    
+    .victory-message {
+        padding: 16px;
+    }
+    
+    .victory-message h2 {
+        font-size: 22px;
+    }
+    
+    .victory-message p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 400px) {
+    .container {
+        padding: 8px;
+        border-radius: 6px;
+    }
+    
+    .board-container {
+        padding: 3px;
+        margin: 10px auto;
+    }
+    
+    .point-number {
+        font-size: 8px;
+        width: 12px;
+        height: 12px;
+        line-height: 12px;
+    }
+    
+    h1 {
+        font-size: 20px;
+    }
+    
+    .player-turn {
+        font-size: 16px;
+    }
+    
+    #reset-button {
+        font-size: 14px;
     }
 } 
