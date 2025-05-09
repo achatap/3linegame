@@ -26,8 +26,34 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentTurnNewLines = [];
 
     // Board configuration
-    const boardSize = 400;
+    let boardSize = 400;
     const squareSizes = [400, 266, 133]; // Sizes of the three squares
+    
+    // Check if we're on a mobile device
+    const isMobile = window.innerWidth <= 600;
+    if (isMobile) {
+        // Adjust board size for mobile
+        const boardContainer = document.querySelector('.board-container');
+        if (boardContainer) {
+            const containerWidth = boardContainer.offsetWidth || window.innerWidth - 20;
+            boardSize = Math.min(350, containerWidth - 20);
+            
+            // Make sure board fits within container
+            gameBoard.style.width = (boardSize - 10) + 'px';
+            gameBoard.style.height = (boardSize - 10) + 'px';
+            
+            // For very small screens, adjust square sizes proportionally
+            if (window.innerWidth <= 400) {
+                const scaleFactor = (boardSize / 400);
+                for (let i = 0; i < squareSizes.length; i++) {
+                    squareSizes[i] = Math.floor(squareSizes[i] * scaleFactor);
+                }
+            }
+        }
+    }
+
+    // Add window resize listener to adjust board for screen size changes
+    window.addEventListener('resize', adjustForScreenSize);
 
     // Points coordinates where coins can be placed (intersections)
     const points = [];
@@ -1432,5 +1458,32 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         gameBoard.appendChild(victoryOverlay);
+    }
+
+    // Function to adjust board elements for different screen sizes
+    function adjustForScreenSize() {
+        const isMobile = window.innerWidth <= 600;
+        const isSmallMobile = window.innerWidth <= 400;
+        
+        // Adjust point and coin sizes if needed
+        if (isMobile) {
+            const boardContainer = document.querySelector('.board-container');
+            if (boardContainer) {
+                const containerWidth = boardContainer.offsetWidth || window.innerWidth - 20;
+                const newSize = Math.min(350, containerWidth - 20);
+                
+                // Only update if significant change
+                if (Math.abs(newSize - boardSize) > 20) {
+                    boardSize = newSize;
+                    
+                    // Update board dimensions
+                    gameBoard.style.width = (boardSize - 10) + 'px';
+                    gameBoard.style.height = (boardSize - 10) + 'px';
+                    
+                    // Consider a more advanced resize handling if needed
+                    // A full reset would be complex but may be necessary for drastic size changes
+                }
+            }
+        }
     }
 }); 
