@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three Square Coin Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Three Square Coin Game</h1>
+        
+        <div class="game-info">
+            <div class="player-turn">
+                <span id="current-player">Player 1 (Black)</span>'s turn
+            </div>
+            <button id="reset-button">Reset Game</button>
+        </div>
+        
+        <!-- Game message area below the game-info bar -->
+        <div id="game-message" class="game-message"></div>
+        
+        <div class="board-container">
+            <div id="game-board"></div>
+            <div id="points"></div>
+        </div>
+        
+        <div class="coin-counters">
+            <div id="player1-coins" class="coin-counter">
+                <span class="coin-label">Player 1 (Black)</span>
+                <span class="coin-count">9</span> coins
+            </div>
+            <div id="player2-coins" class="coin-counter">
+                <span class="coin-label">Player 2 (White)</span>
+                <span class="coin-count">9</span> coins
+            </div>
+        </div>
+        
+        <div class="rules">
+            <h2>Game Rules</h2>
+            <ol>
+                <li>Each player has 9 coins.</li>
+                <li>Players take turns placing their coins on the board's intersections.</li>
+                <li>When a player forms a line of 3 adjacent coins (horizontal or vertical only, not diagonal), they can remove one of their opponent's coins. The opponent's coin cannot be part of a line.</li>
+                <li>After all coins are placed, players take turns moving their coins to adjacent positions.</li>
+                <li>When a player forms a new line by moving a coin, they can remove one of their opponent's coins.</li>
+                <li>If all opponent coins are protected (part of lines), the turn is automatically skipped.</li>
+                <li>A player wins when their opponent has fewer than 3 coins remaining or cannot make a valid move.</li>
+            </ol>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html> 
